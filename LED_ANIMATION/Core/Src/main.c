@@ -61,6 +61,7 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+// function has been implemented beforehand
 void clearAllClock(){
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, SET);
 	HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, SET);
