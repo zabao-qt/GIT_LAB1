@@ -61,6 +61,74 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+void clearAllClock(){
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, SET);
+	HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, SET);
+	HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, SET);
+	HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, SET);
+	HAL_GPIO_WritePin(LED5_GPIO_Port, LED5_Pin, SET);
+	HAL_GPIO_WritePin(LED6_GPIO_Port, LED6_Pin, SET);
+	HAL_GPIO_WritePin(LED7_GPIO_Port, LED7_Pin, SET);
+	HAL_GPIO_WritePin(LED8_GPIO_Port, LED8_Pin, SET);
+	HAL_GPIO_WritePin(LED9_GPIO_Port, LED9_Pin, SET);
+	HAL_GPIO_WritePin(LED10_GPIO_Port, LED10_Pin, SET);
+	HAL_GPIO_WritePin(LED11_GPIO_Port, LED11_Pin, SET);
+	HAL_GPIO_WritePin(LED12_GPIO_Port, LED12_Pin, SET);
+}
+
+void displayNumberOnClock(int number) {
+	switch (number) {
+	case 1:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, RESET);
+		break;
+	case 2:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, RESET);
+		break;
+	case 3:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, RESET);
+		break;
+	case 4:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, RESET);
+		break;
+	case 5:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED5_GPIO_Port, LED5_Pin, RESET);
+		break;
+	case 6:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED6_GPIO_Port, LED6_Pin, RESET);
+		break;
+	case 7:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED7_GPIO_Port, LED7_Pin, RESET);
+		break;
+	case 8:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED8_GPIO_Port, LED8_Pin, RESET);
+		break;
+	case 9:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED9_GPIO_Port, LED9_Pin, RESET);
+		break;
+	case 10:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED10_GPIO_Port, LED10_Pin, RESET);
+		break;
+	case 11:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED11_GPIO_Port, LED11_Pin, RESET);
+		break;
+	case 12:
+		clearAllClock();
+		HAL_GPIO_WritePin(LED12_GPIO_Port, LED12_Pin, RESET);
+		break;
+	}
+}
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -91,11 +159,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int count = 1;
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+	  if (count > 12) count = 1;
+	  displayNumberOnClock(count++);
+	  HAL_Delay(200);
   }
   /* USER CODE END 3 */
 }
