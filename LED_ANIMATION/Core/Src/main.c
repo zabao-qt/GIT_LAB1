@@ -77,7 +77,7 @@ void clearAllClock(){
 	HAL_GPIO_WritePin(LED12_GPIO_Port, LED12_Pin, SET);
 }
 
-void displayNumberOnClock(int number) {
+void setNumberOnClock(int number) {
 	switch (number) {
 	case 1:
 		clearAllClock();
@@ -123,7 +123,7 @@ void displayNumberOnClock(int number) {
 		clearAllClock();
 		HAL_GPIO_WritePin(LED11_GPIO_Port, LED11_Pin, RESET);
 		break;
-	case 12:
+	case 0:
 		clearAllClock();
 		HAL_GPIO_WritePin(LED12_GPIO_Port, LED12_Pin, RESET);
 		break;
