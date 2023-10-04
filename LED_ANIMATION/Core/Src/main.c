@@ -201,12 +201,41 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int count = 1;
+  int hour = 0;
+  int minute = 0;
+  int second = 0;
   while (1)
   {
-	  if (count > 12) count = 1;
-	  displayNumberOnClock(count++);
-	  HAL_Delay(200);
+
+	  // Display hour, minute, and second sequentially
+	  setNumberOnClock(hour % 12);
+	  setNumberOnClock(minute % 60);
+	  setNumberOnClock(second % 60);
+
+	  // Update second indexes
+	  second++;
+	  if (second % 5 == 0) {
+		  clearNumberOnClock((second-1) / 5);
+		  setNumberOnClock(second / 5);
+	  }
+	  // Update minute indexes
+	  if (second > 59) {
+		  clearNumberOnClock((minute-1) / 5);
+		  minute++;
+		  setNumberOnClock(minute / 5);
+	  }
+	  // Update hour indexes
+	  if (minute > 50) {
+		  hour++;
+		  clearNumberOnClock(hour - 1);
+		  setNumberOnClock(hour);
+	  }
+	  // Reset clock indexes
+	  if (hour > 11) hour = 0;
+	  if (minute > 59) minute = 0;
+	  if (second > 59) second = 0;
+
+	  HAL_Delay(100);  // Delay for 1 second
   }
   /* USER CODE END 3 */
 }
